@@ -1,9 +1,11 @@
 import React, { Component } from "react"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./index.css"
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Card} from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./index.css"
+
 import {cards} from './cardsdata';
 import logo from './pictures/logo.webp'
 
@@ -11,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        
         <Router>
           <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand>
@@ -55,6 +58,7 @@ class App extends Component {
             </Route>
           </Switch>
         </Router>
+        <ScrollUpButton />
       </div>
     )
   }
