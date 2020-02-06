@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css"
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button, CardColumns, Card} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Card} from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import Grid from '@material-ui/core/Grid';
 import {cards} from './cardsdata';
 import logo from './pictures/logo.webp'
 
@@ -24,18 +24,15 @@ class App extends Component {
                   <NavDropdown.Item as={Link} to="/auto">Auto</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/crafts">Crafts</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/food">Food</NavDropdown.Item>
-
                 </NavDropdown>  
                 <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
               </Nav>
-              
               <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                 <Button variant="outline-success" as={Link} to="/search">Search</Button>
               </Form>
             </Navbar.Collapse>
           </Navbar>
-          
           <br/>
           <Switch>
             <Route exact path="/">
@@ -79,23 +76,23 @@ function getCards(myFilter) {
 
   let realCards = myFilter == "all" ? cards : cards.filter(card => card.filter == myFilter)
 
-  let listCards = realCards.map((x)=>
-    <Card key={x.id} bg={x.filter} text="white" style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={x.image} />
-      <Card.Body>
-        <Card.Title>{x.title}</Card.Title>
-        <Card.Text>{x.description}</Card.Text>
-        <Button href={x.link} variant="light">Learn Here</Button>
-      </Card.Body>
-    </Card>
+  let listCards = realCards.reverse().map((x)=>
+    <Grid key={x.id} item>
+      <Card  bg={x.filter} text="white" style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={x.image} />
+        <Card.Body>
+          <Card.Title>{x.title}</Card.Title>
+          <Card.Text>{x.description}</Card.Text>
+          <Button href={x.link} variant="light">Learn Here</Button>
+        </Card.Body>
+      </Card>
+    </Grid>
   );
 
   return (
-    <CardColumns>
-      <center>
-        {listCards}
-      </center>
-    </CardColumns>
+    <Grid container spacing={4} justify="center">
+      {listCards}
+    </Grid>
   )
 }
 
