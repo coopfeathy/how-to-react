@@ -53,7 +53,7 @@ var cards = [
         "id": 6,
         "filter":"secondary",
         "image": image6,
-        "title":"Horwire Car",
+        "title":"Hotwire a Car",
         "description":"Learn how to hotwire a car.",
         "link":"https://www.wikihow.com/Hotwire-a-Car"
      },
